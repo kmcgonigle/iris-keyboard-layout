@@ -8,10 +8,12 @@ I'm building my first mechanical keyboard, and thought it would be handy to have
 I write code for a living, and also often type in Japanese, so this mapping will be geared towards my specific needs.
 
 ## Layers
-0. Basic QWERTY, with Backspace in Colemak position
-1. (Toggle) Workman Layout (Colemak alternative)
-2. (Toggle) Numpad, Backlight Settings, and Arrow Keys; Planning to add some Unicode emoji to this layer as well
-3. (Momentary) Brackets, Hyphens, etc, plus audio controls, copy/paste, function keys, and Japanese toggle.
+0. DEFAULT 				Basic QWERTY, with Backspace in Colemak position
+1. Toggle WORKMAN 		Workman Layout (Colemak alternative)
+2. Toggle NUM 			Numpad, Arrow and Mouse keys
+3. Momentary UTIL 		Brackets, Hyphens, etc, plus audio controls, copy/paste, function keys, and Japanese toggle
+4. Toggle EMOJI			Dedicated emoji layer! Slack codes and pure unicode emoji
+5. Momentary ADJUST		Layer used to switch between layers; also backlight (per-key LED) and underglow (RGB) light controls, and a Reset button
 
 ## Notes
 Feel free to fork this and use as you wish! Happy building!
@@ -23,3 +25,6 @@ Some useful resources:
 - [Keebio Iris Build Guide](https://docs.keeb.io/iris-build-guide/)
 - [Iris Case Files](https://github.com/keebio/iris-case) (for getting your own custom case 3d printed / laser cut)
 - [QMK Firmware for Iris](https://github.com/qmk/qmk_firmware/tree/master/keyboards/keebio/iris)
+
+Command to compile and deploy this layout (with keyboard connected, and terminal in the correct directory):
+`make keebio/iris:katmcgo:avrdude`

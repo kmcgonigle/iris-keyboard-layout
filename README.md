@@ -8,12 +8,12 @@ I'm building my first mechanical keyboard, and thought it would be handy to have
 I write code for a living, and also often type in Japanese, so this mapping will be geared towards my specific needs.
 
 ## Layers
-0. DEFAULT 				Basic QWERTY, with Backspace in Colemak position
-1. Toggle WORKMAN 		Workman Layout (Colemak alternative)
-2. Toggle NUM 			Numpad, Arrow and Mouse keys
-3. Momentary UTIL 		Brackets, Hyphens, etc, plus audio controls, copy/paste, function keys, and Japanese toggle
-4. Toggle EMOJI			Dedicated emoji layer! Slack codes and pure unicode emoji
-5. Momentary ADJUST		Layer used to switch between layers; also backlight (per-key LED) and underglow (RGB) light controls, and a Reset button
+0. DEFAULT              Basic QWERTY, with Backspace in Colemak position
+1. Toggle WORKMAN       Workman Layout (Colemak alternative)
+2. Toggle NUM           Numpad, Arrow and Mouse keys
+3. Momentary UTIL       Brackets, Hyphens, etc, plus audio controls, copy/paste, function keys, and Japanese toggle
+4. Toggle EMOJI         Dedicated emoji layer! Slack codes and pure unicode emoji
+5. Momentary ADJUST     Layer used to switch between layers; also backlight (per-key LED) and underglow (RGB) light controls, and a Reset button
 
 ## Notes
 Feel free to fork this and use as you wish! Happy building!
@@ -28,3 +28,7 @@ Some useful resources:
 
 Command to compile and deploy this layout (with keyboard connected, and terminal in the correct directory):
 `make keebio/iris:katmcgo:avrdude`
+
+## TODO
+- Per-key LEDs (backlighting) have not been set up yet; had to order slightly smaller LEDs to fit my switch/keycap combo.
+- Underglow RGB LEDs still need to be set up as well

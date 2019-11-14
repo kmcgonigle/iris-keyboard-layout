@@ -16,6 +16,8 @@ I write code for a living, and also often type in Japanese, so this mapping will
 5. Momentary ADJUST     Layer used to switch between layers; also backlight (per-key LED) and underglow (RGB) light controls, and a Reset button
 
 ## Notes
+The JSON "min" file is for using on the [QMK Configurator](https://config.qmk.fm/#/keebio/iris/rev2/LAYOUT) site to have a quick visual on the key mappings and easily print out reference sheets for the layers. The [QMK Configurator](https://config.qmk.fm/#/keebio/iris/rev2/LAYOUT) site will reject files with carriage returns.
+
 Feel free to fork this and use as you wish! Happy building!
 
 Some useful resources:

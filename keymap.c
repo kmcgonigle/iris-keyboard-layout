@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LCBR, KC_RCBR, KC_PMNS, KC_PPLS, KC_VOLD, KC_VOLU,                            KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_BRID, KC_BRIU,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LBRC, KC_RBRC, _______, _______, KC_MRWD, KC_MFFD,                            KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______,
+     KC_LBRC, KC_RBRC, _______, SCRSTWIN,KC_MRWD, KC_MFFD,                            KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LT,   KC_GT,   CMD_CLR, SCRNSHOT,CMD_X,   CMD_F,   CMD_V,            _______, _______, _______, _______, _______, _______, KC_LANG1,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -107,11 +107,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_EMOJI] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     S_JOY,   S_CLAP,  S_SWEAT, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
+     S_THINK, S_SWEAT, S_JOY,   S_STARRY,S_SMILE, S_BLUSH,                            UC_SHRUG,UC_HUG,  UC_FLIP, UC_FLIP2, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     UC_SHRUG,UC_HUG,  UC_FLIP, UC_FLIP2, _______, _______,                            _______, _______, _______, _______, _______, _______,
+     S_SOB,   S_STARRY,S_CLAP,  S_RAISED,S_CROSSED,S_PRAY,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______,  _______,
+     S_TADA,  S_HEART, S_SPRKHRT,S_UNICORN,S_DANCE,S_SHRUG,                           _______, _______, _______, _______, _______,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -142,7 +142,7 @@ void matrix_init_user(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         switch(keycode) {
-          case CMD_CLR:
+          case CMD_CLR: // Select all content and delete (quickly clear a document or text field)
             if (record->event.pressed) {
                 register_code(KC_LGUI);
                 tap_code(KC_A);                 
@@ -151,11 +151,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
-          case SCRNSHOT:
+          case SCRNSHOT: // Screenshot on Mac that will create crosshairs; click-drag required to complete screenshot
             if (record->event.pressed) {
                 register_code(KC_LGUI);
                 register_code(KC_LSFT);
-                tap_code(KC_4);                 
+                tap_code(KC_4);
+                unregister_code(KC_LGUI);
+                unregister_code(KC_LSFT);                 
+            }
+            return false;
+            break; 
+          case SCRSTWIN: // Screenshot on Mac that will take a photo of a window; click required to complete screenshot
+            if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_LSFT);
+                tap_code(KC_4);
+                tap_code(KC_SPC);
                 unregister_code(KC_LGUI);
                 unregister_code(KC_LSFT);                 
             }
@@ -203,10 +214,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
 
           // Unicode / Japanese emoji
-          case UC_SHRUG:  // ¯\_(ツ)_/¯
-              send_unicode_hex_string("00AF 005C 005F 0028 30C4 0029 005F 002F 00AF");
-              return false;
-              break;
           case UC_HUG:  // (っ◕‿◕)っ
               send_unicode_hex_string("0028 3063 25D5 203F 25D5 0029 3063");
               return false;
@@ -219,18 +226,78 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
               send_unicode_hex_string("253B 2501 253B FE35 0020 005C 0028 00B0 25A1 00B0 0029 002F 0020 FE35 0020 253B 2501 253B");
               return false;
               break;
+          case UC_SHRUG:  // ¯\_(ツ)_/¯
+              send_unicode_hex_string("00AF 005C 005F 0028 30C4 0029 005F 002F 00AF");
+              return false;
+              break;
 
           // Slack / Signal / Markdown emoji
-          case S_JOY:
-              SEND_STRING(":joy:");
+          case S_BLUSH:
+              SEND_STRING(":blush:");
               return false;
               break;
           case S_CLAP:
               SEND_STRING(":clap:");
               return false;
               break;
+          case S_CROSSED:
+              SEND_STRING(":crossed_fingers:");
+              return false;
+              break;
+          case S_DANCE:
+              SEND_STRING(":dancer:");
+              return false;
+              break;
+          case S_HEART:
+              SEND_STRING(":heart:");
+              return false;
+              break;
+          case S_JOY:
+              SEND_STRING(":joy:");
+              return false;
+              break;
+          case S_PRAY:
+              SEND_STRING(":pray:");
+              return false;
+              break;
+          case S_RAISED:
+              SEND_STRING(":raised_hands:");
+              return false;
+              break;
+          case S_SHRUG:
+              SEND_STRING(":woman-shrugging:");
+              return false;
+              break;
+          case S_SMILE:
+              SEND_STRING(":smile:");
+              return false;
+              break;
+          case S_SOB:
+              SEND_STRING(":sob:");
+              return false;
+              break;
+          case S_SPRKHRT:
+              SEND_STRING(":sparkling_heart:");
+              return false;
+              break;
+          case S_STARRY:
+              SEND_STRING(":star_struck:");
+              return false;
+              break;
           case S_SWEAT:
               SEND_STRING(":sweat_smile:");
+              return false;
+              break;
+          case S_TADA:
+              SEND_STRING(":tada:");
+              return false;
+              break;
+          case S_THINK:
+              SEND_STRING(":thinking_face:");
+              return false;
+              break;
+          case S_UNICORN:
+              SEND_STRING(":unicorn_face:");
               return false;
               break;
       }

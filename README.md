@@ -8,7 +8,7 @@ I'm building my first mechanical keyboard, and thought it would be handy to have
 I write code for a living, and also often type in Japanese, so this mapping will be geared towards my specific needs.
 
 ## Layers
-0.DEFAULT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Basic QWERTY, with Backspace in Colemak position
+0. DEFAULT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Basic QWERTY, with Backspace in Colemak position
 1. Toggle WORKMAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workman Layout (Colemak alternative)
 2. Toggle NUM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Numpad, Arrow and Mouse keys
 3. Momentary UTIL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brackets, Hyphens, etc, plus audio controls, copy/paste, function keys, and Japanese toggle
@@ -34,3 +34,4 @@ Command to compile and deploy this layout (with keyboard connected, and terminal
 ## TODO
 - Per-key LEDs (backlighting) have not been set up yet; had to order slightly smaller LEDs to fit my switch/keycap combo.
 - Underglow RGB LEDs still need to be set up as well
+- Add sections with notes for how to code features: unicode / macros, backlight, underglow, RGB color per layer, key combos

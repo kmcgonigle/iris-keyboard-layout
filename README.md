@@ -8,12 +8,12 @@ I'm building my first mechanical keyboard, and thought it would be handy to have
 I write code for a living, and also often type in Japanese, so this mapping will be geared towards my specific needs.
 
 ## Layers
-0. DEFAULT              Basic QWERTY, with Backspace in Colemak position
-1. Toggle WORKMAN       Workman Layout (Colemak alternative)
-2. Toggle NUM           Numpad, Arrow and Mouse keys
-3. Momentary UTIL       Brackets, Hyphens, etc, plus audio controls, copy/paste, function keys, and Japanese toggle
-4. Toggle EMOJI         Dedicated emoji layer! Slack codes and pure unicode emoji
-5. Momentary ADJUST     Layer used to switch between layers; also backlight (per-key LED) and underglow (RGB) light controls, and a Reset button
+0.DEFAULT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Basic QWERTY, with Backspace in Colemak position
+1. Toggle WORKMAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workman Layout (Colemak alternative)
+2. Toggle NUM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Numpad, Arrow and Mouse keys
+3. Momentary UTIL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brackets, Hyphens, etc, plus audio controls, copy/paste, function keys, and Japanese toggle
+4. Toggle EMOJI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dedicated emoji layer! Slack codes and pure unicode emoji
+5. Momentary ADJUST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Layer used to switch between layers; also backlight (per-key LED) and underglow (RGB) light controls, and a Reset button
 
 ## Notes
 The JSON "min" file is for using on the [QMK Configurator](https://config.qmk.fm/#/keebio/iris/rev2/LAYOUT) site to have a quick visual on the key mappings and easily print out reference sheets for the layers. The [QMK Configurator](https://config.qmk.fm/#/keebio/iris/rev2/LAYOUT) site will reject files with carriage returns.

@@ -1,5 +1,5 @@
 # Iris Split Keyboard Layout (QMK Key Mapping)
-QMK Config (JSON) file for the Iris Rev 2.5 split keyboard from keebio.
+QMK Config files for the Iris Rev 2.5 split keyboard from keebio.
 
 
 ## Purpose

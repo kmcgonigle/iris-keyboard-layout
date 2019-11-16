@@ -29,3 +29,6 @@
 #define MOUSEKEY_TIME_TO_MAX                        20
 #define MOUSEKEY_WHEEL_MAX_SPEED                    8
 #define MOUSEKEY_WHEEL_MAX_TIME_TO_MAX              40
+
+#define FRC_QUIT LGUI(LALT(KC_ESC))  // Force Quit
+#define SLEEP LGUI(LALT(KC_EJCT))    // Sleep

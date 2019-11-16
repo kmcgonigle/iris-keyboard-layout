@@ -32,3 +32,4 @@
 
 #define FRC_QUIT LGUI(LALT(KC_ESC))  // Force Quit
 #define SLEEP LGUI(LALT(KC_EJCT))    // Sleep
+#define NXT_INPUT LGUI(LALT(KC_SPC)) // Cycle through Mac keyboards/input types/language modes

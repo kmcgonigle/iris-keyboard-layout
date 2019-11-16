@@ -21,31 +21,7 @@ enum custom_keycodes {
 
   UC_SHRUG, UC_HUG, UC_FLIP, UC_FLIP2,
 
-  S_BLUSH, S_CLAP, S_CROSSED, S_DANCE, S_HEART, S_JOY, S_PRAY, S_RAISED, S_SHRUG, S_SMILE, S_SOB, S_SPRKHRT, S_STARRY S_SWEAT, S_TADA, S_THINK, S_UNICORN
-};
-
-
-// Combo keys for mouse/arrow navigation
-enum combos {
-  ARROW_UP,
-  ARROW_UP_WKMN,
-  ARROW_LEFT,
-  ARROW_RIGHT,
-  ARROW_DOWN
-};
-
-const uint16_t PROGMEM arrow_up_combo[] = {KC_LALT, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM arrow_up_workman_combo[] = {KC_LALT, KC_I, COMBO_END};
-const uint16_t PROGMEM arrow_left_combo[] = {KC_LALT, KC_DOT, COMBO_END};
-const uint16_t PROGMEM arrow_right_combo[] = {KC_LALT, KC_RSPC, COMBO_END};
-const uint16_t PROGMEM arrow_down_combo[] = {KC_LALT, KC_SLSH, COMBO_END};
-
-combo_t key_combos[COMBO_COUNT] = {
-  [ARROW_UP] = COMBO(arrow_up_combo, KC_UP),
-  [ARROW_UP_WKMN] = COMBO(arrow_up_workman_combo, KC_UP),
-  [ARROW_LEFT] = COMBO(arrow_left_combo, KC_LEFT),
-  [ARROW_RIGHT] = COMBO(arrow_right_combo, KC_RGHT),
-  [ARROW_DOWN] = COMBO(arrow_down_combo, KC_DOWN)
+  S_BLUSH, S_CLAP, S_CROSSED, S_DANCE, S_HEART, S_JOY, S_PRAY, S_RAISED, S_SCREAM, S_SHRUG, S_SMILE, S_SOB, S_SPRKHRT, S_STARRY, S_SWEAT, S_TADA, S_THINK, S_UNICORN
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -113,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      S_TADA,  S_HEART, S_SPRKHRT,S_UNICORN,S_DANCE,S_SHRUG,                           _______, _______, _______, _______, _______,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,
+     S_SCREAM, _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     _______, _______, _______,                   KC_TRNS, _______, KC_TRNS
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -121,15 +97,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ADJUST] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, TO(0),   TO(1),   TO(2),   TO(4),   _______,                            RGB_TOG, RGB_MOD, RGB_RMOD,RGB_VAI, RGB_VAD, _______,
+     _______, TO(0),   TO(1),   TO(2),   TO(4),   KC_LANG1,                           RGB_TOG, RGB_MOD, RGB_RMOD,_______, RGB_SAD, RGB_SAI,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_LANG1,_______, _______, BL_BRTG, BL_TOGG,                            RGB_SPI, RGB_SPD, RGB_SAI, RGB_SAD, RGB_HUI, RGB_HUD,
+     _______, _______,   KC_UP, _______, KC_WH_U, _______,                            RGB_VAD, RGB_VAI, _______, _______, RGB_HUI, RGB_HUD,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, BL_DEC,  BL_INC,                             RGB_M_R, RGB_M_B, RGB_M_P, RGB_M_G, _______, _______,
+     _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_MS_U, _______,                            RGB_M_R, RGB_M_B, RGB_M_P, RGB_M_G, BL_BRTG, BL_TOGG,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     RESET,   _______, _______, _______, _______, _______, _______,          _______, RGB_M_SW,RGB_M_SN,RGB_M_K, RGB_M_X, _______, _______,
+     RESET,   _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN1,          _______, RGB_M_SW,RGB_M_SN,RGB_M_K, RGB_M_X, BL_DEC,  BL_INC,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, _______,                   KC_TRNS, _______, KC_TRNS
+                                    KC_WH_D, KC_BTN2, KC_BTN1,                   KC_TRNS, _______, KC_TRNS
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   )
 };
@@ -166,9 +142,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 register_code(KC_LGUI);
                 register_code(KC_LSFT);
                 tap_code(KC_4);
-                tap_code(KC_SPC);
                 unregister_code(KC_LGUI);
-                unregister_code(KC_LSFT);                 
+                unregister_code(KC_LSFT);
+                tap_code(KC_SPC);                
             }
             return false;
             break; 
@@ -264,6 +240,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
               SEND_STRING(":raised_hands:");
               return false;
               break;
+          case S_SCREAM:
+              SEND_STRING(":scream:");
+              return false;
+              break;
           case S_SHRUG:
               SEND_STRING(":woman-shrugging:");
               return false;
@@ -281,7 +261,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
               return false;
               break;
           case S_STARRY:
-              SEND_STRING(":star_struck:");
+              SEND_STRING(":star-struck:");
               return false;
               break;
           case S_SWEAT:

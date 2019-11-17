@@ -14,7 +14,7 @@
 #define RGBLIGHT_RAINBOW_SWIRL_RANGE				80
 //#define RGBLIGHT_EFFECT_SNAKE
 //#define RGBLIGHT_EFFECT_KNIGHT
-#define RGBLIGHT_EFFECT_STATIC_GRADIENT
+//#define RGBLIGHT_EFFECT_STATIC_GRADIENT
 #define RGBLIGHT_EFFECT_CHRISTMAS
 #define RGBLED_NUM 24
 #define RGBLIGHT_HUE_STEP 8
@@ -29,7 +29,3 @@
 #define MOUSEKEY_TIME_TO_MAX                        20
 #define MOUSEKEY_WHEEL_MAX_SPEED                    8
 #define MOUSEKEY_WHEEL_MAX_TIME_TO_MAX              40
-
-#define FRC_QUIT LGUI(LALT(KC_ESC))  // Force Quit
-#define SLEEP LGUI(LALT(KC_EJCT))    // Sleep
-#define NXT_INPUT LGUI(LALT(KC_SPC)) // Cycle through Mac keyboards/input types/language modes

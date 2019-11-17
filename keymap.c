@@ -9,6 +9,10 @@ extern keymap_config_t keymap_config;
 #define _EMOJI 4
 #define _ADJUST 5
 
+#define FRC_QUIT LGUI(LALT(KC_ESC))  // Force Quit
+#define SLEEP LGUI(LALT(KC_EJCT))    // Sleep
+#define NXT_INPUT LGUI(LALT(KC_SPC)) // Cycle through Mac keyboards/input types/language modes
+
 enum custom_keycodes {
   WORKMAN = SAFE_RANGE,
   QWERTY,
@@ -55,13 +59,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NUM] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, KC_WH_U, _______, _______, _______, _______,                            _______, KC_P7,   KC_P8,   KC_P9,   KC_PAST, KC_PSLS,
+     KC_TRNS, _______, _______, _______, _______, _______,                            _______, KC_P7,   KC_P8,   KC_P9,   KC_PAST, KC_PSLS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_BTN1, KC_MS_U, KC_BTN2, _______, _______,  _______,                           _______, KC_P4,   KC_P5,   KC_P6,   KC_PMNS, KC_PCMM,
+     KC_TRNS, _______, _______, _______, _______,  _______,                           _______, KC_P4,   KC_P5,   KC_P6,   KC_PMNS, KC_PCMM,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_MS_L, KC_MS_D, KC_MS_R, KC_UP,   _______, _______,                            _______, KC_P1,   KC_P2,   KC_P3,   KC_PPLS, KC_PEQL,
+     KC_TRNS, _______, _______, _______, _______, _______,                            _______, KC_P1,   KC_P2,   KC_P3,   KC_PPLS, KC_PEQL,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, KC_WH_D, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_TRNS,          KC_TRNS, _______, _______, KC_P0,   KC_PDOT, KC_PENT, _______,
+     KC_TRNS, _______, _______, _______, _______, _______, KC_TRNS,          KC_TRNS, _______, _______, KC_P0,   KC_PDOT, KC_PENT, KC_TRNS,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS, KC_TRNS, KC_TRNS
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
@@ -287,28 +291,38 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 // Runs just one time when the keyboard initializes.
-// void matrix_scan_user(void) {
-//   static bool has_ran_yet;
-//   if (!has_ran_yet) {
-//     has_ran_yet = true;
-//         rgblight_setrgb (16, 0, 16);
-//   }
-// }
-// uint32_t layer_state_set_user(uint32_t state) {
-//     switch (biton32(state)) {
-//     case _TAPLAND:
-//         rgblight_setrgb(0, 16, 0); //green
-//         break;
-//     case _LEDCNTL:
-//         rgblight_setrgb(0, 0, 16); //blue
-//         break;
-//     case _EMOJI:
-//         rgblight_setrgb (16, 0, 16); //purple
-//         break;
+// RGB underglow color changes to correspond with selected layer.
+void matrix_scan_user(void) {
+  static bool has_run;
+  if (!has_run) {
+    has_run = true;
+        rgblight_setrgb (RGB_PURPLE);
+  }
+}
+uint32_t layer_state_set_user(uint32_t state) {
+    switch (biton32(state)) {
+    case _WORKMAN:
+        rgblight_setrgb(16,0,16);
+        break;
+    case _QWERTY:
+        rgblight_setrgb(RGB_RED);
+        break;
+    case _NUM:
+        rgblight_setrgb (RGB_GREEN);
+        break;
+    case _UTIL:
+        rgblight_setrgb (RGB_ORANGE);
+        break;
+    case _EMOJI:
+        rgblight_setrgb (RGB_CYAN);
+        break;
+    case _ADJUST:
+        rgblight_setrgb (RGB_WHITE);
+        break;
 
-//     default: //  for any other layers, or the default layer
-//         rgblight_setrgb (16, 0, 16); //purple
-//         break;
-//     }
-//   return state;
-// }
+    default: //  for any other layers, or the default layer
+        rgblight_setrgb (RGB_PURPLE);
+        break;
+    }
+  return state;
+}

@@ -32,6 +32,4 @@ Command to compile and deploy this layout (with keyboard connected, and terminal
 `make keebio/iris:katmcgo:avrdude`
 
 ## TODO
-- Per-key LEDs (backlighting) have not been set up yet; had to order slightly smaller LEDs to fit my switch/keycap combo.
-- Underglow RGB LEDs still need to be set up as well
 - Add sections with notes for how to code features: unicode / macros, backlight, underglow, RGB color per layer, key combos
